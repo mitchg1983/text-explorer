@@ -14,18 +14,18 @@ let posY = 0;
 //Starting value for the intro.
 let intro = 0
 
+let dog = 0
+
 //Main content of the game. Once inside this while loop, all player input is collected. Whatever is written here will
 //appear each time the code is run. I may want to add a condition where the text here is only displayed the first time
 //a player starts the game.
 
-while (win !== 1) {
-    
-    //This small while loop is the intro for the game.
-    while (intro === 0){
+
+
         console.log ('                                   /\\\									 ')
-        console.log ('                              /\\\  //\\\\\\								')
-        console.log ('                       /\\\    //\\\\\\///\\\\\\\\\        /\\\						')
-        console.log ('                      //\\  ///\////\\\\  /\  //\\						')
+        console.log ('                              /\\\  //\\\\								')
+        console.log ('                       /\\\    //\\\\///\\\\\\\        /\\\						')
+        console.log ('                      //\\  ///\////\\  /\  //\\						')
         console.log ('         /\\\          /  ^ \\\/^ ^/^  ^  ^ \\\/^ \\\/  ^ \\\					')
         console.log ('        / ^\\\    /\\\  / ^   /  ^/ ^ ^ ^   ^\\\ ^/  ^^  \\\					')
         console.log ('       /^   \\\  / ^\\\/ ^ ^   ^ / ^  ^    ^  \\\/ ^   ^  \\\       *			')
@@ -50,39 +50,50 @@ while (win !== 1) {
         if (begin === 'START') {
             intro = 1;
         }
-    }
     
-    while (intro === 1) {
-        console.log ('Hello!');
-        direc = prompt ('What direction would you like to travel?');
+while (intro === 1 && win === 0) {
+        //Now that the intro has been completed, we are in the game 'proper'. 
+
+        
+        console.log ('');
+        console.log ('You are currently at ', posX, posY);
+        console.log ('What direction would you like to travel?');
+        console.log ('');
+        direc = prompt ('>');
         
         //Below here are the four different directions the player can travel. Their location is updated after each run of the code.    
+
         if (direc === 'North') {
-            posX = (posX + 1);
-            console.log ('Your position is ', posX, posY);
-        }
-        if (direc === 'South') {
-            posX = (posX - 1);
-            console.log ('Your position is ', posX, posY);
-        }
-        if (direc === 'East') {
             posY = (posY + 1);
-            console.log ('Your position is ', posX, posY);
         }
-        if (direc === 'West') {
+        
+        if (direc === 'South') {
             posY = (posY - 1);
-            console.log ('Your position is ', posX, posY);
+        }
+        
+        if (direc === 'East') {
+            posX = (posX + 1);
+        }
+        
+        if (direc === 'West') {
+            posX = (posX - 1);
         }
         
         //Here are the 25 different 'squares' or 'locations' of the game. 
         
-        if (posX === 0 && posY === 0 ) {
-            
+        if (posX === 0 && posY === 0 && dog === 0) {
+            console.log ('no dog');
         }
+        
+        if (posX === 0 && posY === 0 && dog === 1) {
+            win = 1;
+            console.log ('dog is here');
+        }
+
         
         
         if (posX === 1 && posY === 0 ) {
-            
+            console.log ('You are in 1,0')
         }
         
         
@@ -92,7 +103,8 @@ while (win !== 1) {
         
         
         if (posX === -1 && posY === 0 ) {
-            
+            console.log ('You are in -1,0');
+            win = 1;
         }
         
         
@@ -145,8 +157,8 @@ while (win !== 1) {
         }
         
         
-        if (posX === -2 && posY === 2 ) {
-            
+        if (posX === Number(-2) && posY === 2 ) {
+            win = 1;
             
         }
         if (posX === 0 && posY === -1 ) {
@@ -194,15 +206,13 @@ while (win !== 1) {
         
         
         if (posX === -2 && posY === -2 ) {
-            win = 1;
             
         }
         
         //End of the 'squares'/'locations' section.
     }
-    
-}
 
-if (win === 1) {
-    console.log ('You won the gane!')
-}
+
+
+
+if (intro === 1 && win === 1) {console.log ('You won the gane!')}

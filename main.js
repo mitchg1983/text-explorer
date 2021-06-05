@@ -98,13 +98,14 @@ while (intro === 1 && win === 0) {
         
         
         if (posX === 2 && posY === 0 ) {
-            
+            dog = 1;
+            console.log ('You found Fluffy')
         }
         
         
         if (posX === -1 && posY === 0 ) {
             console.log ('You are in -1,0');
-            win = 1;
+            
         }
         
         
@@ -158,7 +159,7 @@ while (intro === 1 && win === 0) {
         
         
         if (posX === Number(-2) && posY === 2 ) {
-            win = 1;
+            
             
         }
         if (posX === 0 && posY === -1 ) {
